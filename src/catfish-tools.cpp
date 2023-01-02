@@ -1,4 +1,4 @@
-#include "lcd-tools.h"
+#include "catfish-tools.h"
 
 #include <iostream>
 #include <dlfcn.h>
@@ -6,7 +6,7 @@
 #include <hybris/properties/properties.h>
 #include <MGConfItem>
 
-int AsteroidOS::LCD_Tools::SyncTime() {
+int AsteroidOS::LCD_Tools::CatfishSyncTime() {
 	auto lib_mcutool = hybris_dlopen("libmcutool.so", RTLD_LAZY);
 	if (!lib_mcutool) {
 		std::cerr << "Unable to load libmcutool.so" << std::endl;
