@@ -4,6 +4,7 @@
 namespace AsteroidOS::LCD_Tools {
 	int KoiSyncTime();
 	int KoiSetDisplayColor(bool value);
+	int KoiPrepareTimepiece();
 	int Write(char* data);
 }
 #endif //ASTEROIDOS_KOI_TOOLS_H
