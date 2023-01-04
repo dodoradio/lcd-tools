@@ -31,6 +31,11 @@ int AsteroidOS::LCD_Tools::KoiSetDisplayColor(bool value) {
 	return Write(outputBuff);
 }
 
+int AsteroidOS::LCD_Tools::KoiPrepareTimepiece() {
+	char outputBuff[7] = {0x02,0xC1,0xBE,0x78,0x3F,0x91,0xC7};
+	return Write(outputBuff);
+}
+
 int AsteroidOS::LCD_Tools::Write(char* data) {
 	QFile multiSensorFile("/dev/MultiSensors_CD_01");
 	if(!multiSensorFile.open(QIODevice::WriteOnly | QIODevice::Text))
