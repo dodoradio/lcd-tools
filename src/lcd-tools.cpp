@@ -11,10 +11,12 @@ int main( int argc, char** argv ) {
 	bool machineCatfish = false;
 	bool machineKoi = false;
 	bool syncTime = false;
+	int koiDisplayColor = -1;
 
 	app.add_flag("--catfish",machineCatfish,"Ticwatch Pro mode");
 	app.add_flag("--koi",machineKoi,"Casio WSD-F10/20 mode");
 	app.add_flag("--sync-time",syncTime,"Sync lcd time with linux time");
+	app.add_option("--set-display",koiDisplayColor,"(Koi) set display color");
 
 	try{
 		app.parse(argc,argv);
@@ -25,6 +27,9 @@ int main( int argc, char** argv ) {
 		} else if (machineKoi) {
 			if (syncTime) {
 				KoiSyncTime();
+			}
+			if (koiDisplayColor != -1) {
+				KoiSetDisplayColor(koiDisplayColor);
 			}
 		} else
 			throw CLI::CallForAllHelp();
