@@ -1,10 +1,9 @@
 #ifndef ASTEROIDOS_KOI_TOOLS_H
 #define ASTEROIDOS_KOI_TOOLS_H
 
-namespace AsteroidOS::LCD_Tools {
-	int KoiSyncTime();
-	int KoiSetDisplayColor(bool value);
-	int KoiPrepareTimepiece();
-	int Write(char* data);
+namespace AsteroidOS::LCD_Tools::Koi {
+	void SyncTime(int);
+	void SetDisplayColor(bool value);
+	void PrepareTimepiece(int);
 }
 #endif //ASTEROIDOS_KOI_TOOLS_H
