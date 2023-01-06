@@ -16,6 +16,7 @@ static void Write(const SpiMsg& data) {
 	if(!multiSensorFile.open(QIODevice::WriteOnly | QIODevice::Text))
 	{
 		qCritical("Unable to open file for write. Check permissions");
+		return;
 	}
 	multiSensorFile.write((const char *)data.data(), data.size());
 	multiSensorFile.close();
