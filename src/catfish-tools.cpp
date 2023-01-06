@@ -6,11 +6,12 @@
 #include <hybris/properties/properties.h>
 #include <MGConfItem>
 
-int AsteroidOS::LCD_Tools::CatfishSyncTime() {
+namespace AsteroidOS::LCD_Tools::Catfish {
+void SyncTime(int) {
 	auto lib_mcutool = hybris_dlopen("libmcutool.so", RTLD_LAZY);
 	if (!lib_mcutool) {
 		std::cerr << "Unable to load libmcutool.so" << std::endl;
-		return -1;
+		return;
 	}
 
 	auto use12h = new MGConfItem("/org/asteroidos/settings/use-12h-format");
@@ -26,12 +27,12 @@ int AsteroidOS::LCD_Tools::CatfishSyncTime() {
 	if (!syncTime) {
 		std::cerr << "Unable to get symbol" << std::endl;
 		hybris_dlclose(lib_mcutool);
-		return -1;
+		return;
 	}
 	auto res = syncTime();
 	if (hybris_dlclose(lib_mcutool)) {
 		std::cerr << "Failed to safely close the library" << std::endl;
-		return -1;
+		return;
 	}
-	return res;
+}
 }
