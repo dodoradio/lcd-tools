@@ -37,7 +37,7 @@ void SyncTime(int) {
 	(uint8_t) 0,
 	(uint8_t) ((((dateNow.year() - 2000) & 0xEF) << 1) | ((dateNow.month() & 0x08) >> 3)),
 	(uint8_t) ((dateNow.month() << 5) | (dateNow.day() & 0x1F)),
-	(uint8_t) ((dateNow.dayOfWeek() << 5) | (timeNow.hour() & 0x1F)),
+	(uint8_t) (((dateNow.dayOfWeek() % 7) << 5) | (timeNow.hour() & 0x1F)), //weeks are counted from sunday, sunday encoded as zero.
 	(uint8_t) (timeNow.minute() & 0xFF),
 	(uint8_t) ((timeNow.second() + 1) & 0xFF) //the original casio code seems to add one second here to compensate for an update delay in the subcpu
 	});
