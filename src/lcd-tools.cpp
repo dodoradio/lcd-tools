@@ -19,6 +19,7 @@ int main( int argc, char** argv ) {
 		app.add_flag("--white-background",[](int){SetDisplayColor(true);},"(Koi) set display background to white");
 		app.add_flag("--black-background",[](int){SetDisplayColor(false);},"(Koi) set display background to black");
 		app.add_flag("--prepare-timepiece",PrepareTimepiece,"(Koi) prepare watch for power off into timekeeping mode. You will then need to shut it down manually");
+		CLI11_PARSE(app, argc, argv);
 	}
 	else if (machineCodename == "catfish") {
 		CatfishLcdTools catfish;
@@ -30,8 +31,8 @@ int main( int argc, char** argv ) {
 		app.add_flag("--disable-heartrate",[&catfish](int){ catfish.DisableHeartRate(); },"(Catfish) Disable the heart rate sensor");
 		app.add_flag("--enable-motion",[&catfish](int){ catfish.EnableMotion(); },"(Catfish) Enable motion");
 		app.add_flag("--disable-motion",[&catfish](int){ catfish.DisableMotion(); },"(Catfish) Disable motion");
+		CLI11_PARSE(app, argc, argv);
 	}
 
-	CLI11_PARSE(app, argc, argv);
 	return 0;
 }
