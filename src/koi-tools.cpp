@@ -2,7 +2,6 @@
 
 #include <array>
 #include <iostream>
-#include <dlfcn.h>
 #include <MGConfItem>
 
 #include <QTime>
