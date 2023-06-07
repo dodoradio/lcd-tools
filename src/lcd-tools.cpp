@@ -1,5 +1,6 @@
 #include "catfish-tools.h"
 #include "koi-tools.h"
+#include "medaka-tools.h"
 
 #include <CLI/CLI.hpp>
 
@@ -19,6 +20,13 @@ int main( int argc, char** argv ) {
 		app.add_flag("--white-background",[](int){SetDisplayColor(true);},"(Koi) set display background to white");
 		app.add_flag("--black-background",[](int){SetDisplayColor(false);},"(Koi) set display background to black");
 		app.add_flag("--prepare-timepiece",PrepareTimepiece,"(Koi) prepare watch for power off into timekeeping mode. You will then need to shut it down manually");
+		CLI11_PARSE(app, argc, argv);
+	}
+	if (machineCodename == "medaka") {
+		using namespace AsteroidOS::LCD_Tools::Medaka;
+		app.add_flag("--sync-time",SyncTime,"Sync lcd time with linux time");
+		app.add_flag("--white-background",[](int){SetDisplayColor(true);},"(Medaka) set display background to white");
+		app.add_flag("--black-background",[](int){SetDisplayColor(false);},"(Medaka) set display background to black");
 		CLI11_PARSE(app, argc, argv);
 	}
 	else if (machineCodename == "catfish") {
