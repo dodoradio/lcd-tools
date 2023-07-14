@@ -42,7 +42,14 @@ void SyncTime(int) {
 	});
 }
 
-void SetDisplayColor(bool value) {
+void SyncSettings(int) { // this is meant to be run on a session restart
+	SetDisplayColor(MGConfItem("/org/asteroidos/lcd-tools/medaka/display-color").value().toInt(),false);
+}
+
+void SetDisplayColor(bool value, bool persist) {
+	if (persist) {
+		MGConfItem("/org/asteroidos/lcd-tools/medaka/display-color").set(value);
+	}
 	Write({0xFE,0x01,0x05,(value ? 0x01 : 0x02),0x00,0x00,0x00});
 }
 } // end of namespace AsteroidOS::LCD_Tools::Medaka

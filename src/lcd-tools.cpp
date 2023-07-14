@@ -20,6 +20,7 @@ int main( int argc, char** argv ) {
 		app.add_flag("--white-background",[](int){SetDisplayColor(true);},"(Koi) set display background to white");
 		app.add_flag("--black-background",[](int){SetDisplayColor(false);},"(Koi) set display background to black");
 		app.add_flag("--prepare-timepiece",PrepareTimepiece,"(Koi) prepare watch for power off into timekeeping mode. You will then need to shut it down manually");
+		app.add_flag("--session-restart",SyncSettings,"Initialise LCD for user session restart");
 		CLI11_PARSE(app, argc, argv);
 	}
 	if (machineCodename == "medaka") {
@@ -27,6 +28,7 @@ int main( int argc, char** argv ) {
 		app.add_flag("--sync-time",SyncTime,"Sync lcd time with linux time");
 		app.add_flag("--white-background",[](int){SetDisplayColor(true);},"(Medaka) set display background to white");
 		app.add_flag("--black-background",[](int){SetDisplayColor(false);},"(Medaka) set display background to black");
+		app.add_flag("--session-restart",SyncSettings,"Initialise LCD for user session restart");
 		CLI11_PARSE(app, argc, argv);
 	}
 	else if (machineCodename == "catfish") {
@@ -39,6 +41,7 @@ int main( int argc, char** argv ) {
 		app.add_flag("--disable-heartrate",[&catfish](int){ catfish.DisableHeartRate(); },"(Catfish) Disable the heart rate sensor");
 		app.add_flag("--enable-motion",[&catfish](int){ catfish.EnableMotion(); },"(Catfish) Enable motion");
 		app.add_flag("--disable-motion",[&catfish](int){ catfish.DisableMotion(); },"(Catfish) Disable motion");
+		app.add_flag("--session-restart","Initialise LCD for user session restart"); // this isn't used on catfish, but the service to error out if this option isn't present.
 		CLI11_PARSE(app, argc, argv);
 	}
 

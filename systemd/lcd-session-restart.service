@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync user's LCD settings
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/lcd-tools --session-restart
+
+[Install]
+WantedBy=basic.target

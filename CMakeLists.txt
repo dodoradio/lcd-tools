@@ -14,5 +14,5 @@ pkg_check_modules(LIBHYBRIS REQUIRED hybris-egl-platform libandroid-properties)
 add_subdirectory(src)
 
 install(TARGETS lcd-tools DESTINATION bin)
-install(FILES systemd/lcd-sync-time.service systemd/lcd-sync-time.timer
+install(FILES systemd/lcd-sync-time.service systemd/lcd-sync-time.timer systemd/lcd-session-restart.service
 		DESTINATION /usr/lib/systemd/user)

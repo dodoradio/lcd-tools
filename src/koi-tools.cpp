@@ -42,8 +42,15 @@ void SyncTime(int) {
 	});
 }
 
-void SetDisplayColor(bool value) {
+void SetDisplayColor(bool value, bool persist) {
+	if (persist) {
+		MGConfItem("/org/asteroidos/lcd-tools/koi/display-color").set(value);
+	}
 	Write({0xFE,0x01,0x05,value,0x00,0x00,0x00});
+}
+
+void SyncSettings(int) {
+	SetDisplayColor(MGConfItem("/org/asteroidos/lcd-tools/medaka/display-color").value().toInt(),false);
 }
 
 void PrepareTimepiece(int) {

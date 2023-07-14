@@ -3,7 +3,8 @@
 
 namespace AsteroidOS::LCD_Tools::Koi {
 	void SyncTime(int);
-	void SetDisplayColor(bool value);
+	void SyncSettings(int);
+	void SetDisplayColor(bool value, bool persist = true);
 	void PrepareTimepiece(int);
 }
 #endif //ASTEROIDOS_KOI_TOOLS_H
