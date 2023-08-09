@@ -50,7 +50,7 @@ void SetDisplayColor(bool value, bool persist) {
 }
 
 void SyncSettings(int) {
-	SetDisplayColor(MGConfItem("/org/asteroidos/lcd-tools/medaka/display-color").value().toInt(),false);
+	SetDisplayColor(MGConfItem("/org/asteroidos/lcd-tools/koi/display-color").value().toInt(),false);
 }
 
 void PrepareTimepiece(int) {
